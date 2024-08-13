@@ -128,6 +128,15 @@ class IssueModal {
       .click();
     cy.get(this.issueDetailModal).should('not.exist');
   }
+
+  validateAmountOfIssuesInBacklog(amountOfIssues) {
+    cy.get('[data-testid="board-list:backlog"]').within(() => {
+      cy.get('[data-testid="list-issue"]').should(
+        'have.length',
+        amountOfIssues
+      );
+    });
+  }
 }
 
 export default new IssueModal();
